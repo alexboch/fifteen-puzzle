@@ -1,0 +1,56 @@
+﻿<Window x:Class="_15.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_15"
+        mc:Ignorable="d"
+        Title="Пятнашки" Height="525" Width="525">
+    <Window.Resources>
+        <ImageBrush x:Key="FieldBackgroundBrush" ImageSource="field_background.jpg"></ImageBrush>
+        <local:VisibilityConverter x:Key="visConverter"/>
+    </Window.Resources>
+
+    <Grid Background="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ItemsControl x:Name="cellsGrid" Grid.Row="0" ItemsSource="{Binding Path=Cells}">
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Grid.Row" Value="{Binding Path=Row}"/>
+                    <Setter Property="Grid.Column" Value="{Binding Path=Column}"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="400" Height="400" Background="{StaticResource FieldBackgroundBrush}" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button FontWeight="Bold" FontSize="30" Content="{Binding Path=Number}" Margin="0.1" Visibility="{Binding Converter={StaticResource visConverter}}" Click="OnCellMouseDown" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <Button Click="NewGame" Margin="10" FontSize="25" Grid.Row="1" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center">Новая игра</Button>
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" FontSize="25" Margin="10" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window},Path=numSteps,  StringFormat=Ходов: {0}}"/>
+        </StackPanel>
+    </Grid>
+</Window>
