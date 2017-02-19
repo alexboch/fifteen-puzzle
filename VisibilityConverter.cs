@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows;
 
-namespace _15
+namespace Fifteen
 {
     class VisibilityConverter : IValueConverter
     {

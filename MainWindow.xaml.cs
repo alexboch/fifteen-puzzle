@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Windows.Media.Animation;
 
-namespace _15
+namespace Fifteen
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

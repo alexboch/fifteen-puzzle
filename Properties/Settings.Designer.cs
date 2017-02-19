@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _15.Properties
+namespace Fifteen.Properties
 {
 
 

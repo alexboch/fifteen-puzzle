@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace _15
+namespace Fifteen
 {
     public class Cell
     {
